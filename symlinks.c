@@ -29,7 +29,12 @@
 #define PATH_MAX 1024
 #endif
 
-#define progver "%s: scan/change symbolic links - v1.4.3\n\n"
+/*
+ * official version
+ */
+#define VERSION "1.4.4 2025-04-06"          /* format: major.minor YYYY-MM-DD */
+
+#define progver "%s: scan/change symbolic links - %s\n"
 
 static char *progname;
 static int verbose = 0,
@@ -391,8 +396,7 @@ static void dirwalk(char *path, unsigned long pathlen, dev_t dev) {
 }
 
 static void usage_error(void) {
-    fprintf(stderr, progver, progname);
-    fprintf(stderr, "Usage:\t%s [-cdorstv] dirlist\n\n", progname);
+    fprintf(stderr, "Usage:\t%s [-cdorstvV] dirlist ...\n\n", progname);
     fprintf(stderr, "Flags:"
             "\t-c  change absolute/messy links to relative\n"
             "\t-d  delete dangling links\n"
@@ -400,7 +404,9 @@ static void usage_error(void) {
             "\t-r  recurse into subdirs\n"
             "\t-s  shorten lengthy links (displayed in output only when -c not specified)\n"
             "\t-t  show what would be done by -c\n"
-            "\t-v  verbose (show all symlinks)\n\n");
+            "\t-v  verbose (show all symlinks)\n"
+	    "\t-V  print version string and exit\n\n");
+    fprintf(stderr, progver, progname, VERSION);
     exit(1);
 }
 
@@ -440,6 +446,7 @@ int main(int argc, char **argv) {
                 } else if (c == 's') { shorten   = 1;
                 } else if (c == 't') { testing   = 1;
                 } else if (c == 'v') { verbose   = 1;
+                } else if (c == 'V') { (void) printf("%s\n", VERSION); exit(0);
                 } else {
                     usage_error();
                 }
