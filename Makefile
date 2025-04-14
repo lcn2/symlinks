@@ -59,8 +59,9 @@ CFLAGS= -O3 -g3 --pedantic -Wall
 V=@:
 #V=@
 
-DESTDIR= /usr/local/bin
-MAN8DIR= /usr/local/man/man8
+PREFIX= /usr/local
+DESTDIR= ${PREFIX}/bin
+MAN8DIR= ${PREFIX}/man/man8
 
 TARGETS= symlinks
 
