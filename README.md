@@ -18,22 +18,7 @@ sudo make install clobber
 ```
 
 
-# To use
-
-```sh
-/usr/local/bin/symlinks [-cdorstvV] dirlist ..
-
-    -c  change absolute/messy links to relative
-	-d  delete dangling links
-	-o  warn about links across file systems
-	-r  recurse into subdirs
-	-s  shorten lengthy links (displayed in output only when -c not specified)
-	-t  show what would be done by -c
-	-v  verbose (show all symlinks)
-	-V  print version string and exit
-
-symlinks: scan/change symbolic links - 1.4.4 2025-04-06
-```
+# Examples
 
 
 ### Scan:
@@ -54,6 +39,24 @@ symlinks: scan/change symbolic links - 1.4.4 2025-04-06
 ### More options:
 
     $ symlinks -h
+
+
+# To use
+
+```
+/usr/local/bin/symlinks [-cdorstvV] dirlist ..
+
+    -c  change absolute/messy links to relative
+	-d  delete dangling links
+	-o  warn about links across file systems
+	-r  recurse into subdirs
+	-s  shorten lengthy links (displayed in output only when -c not specified)
+	-t  show what would be done by -c
+	-v  verbose (show all symlinks)
+	-V  print version string and exit
+
+symlinks: scan/change symbolic links - 1.4.4 2025-04-06
+```
 
 
 ## Changes
